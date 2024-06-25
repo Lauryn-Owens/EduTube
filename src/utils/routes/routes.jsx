@@ -13,7 +13,7 @@ function ApplicationRoutes() {
       <Route exact path='/' element={<Home/>}/>
       <Route exact  path='/login' element={<Login/>}  />
       <Route exact path="/videos" element={<Videos/>}/>
-      <Route exact path="/singleVideo" element={<SingleVideo/>}/>
+      <Route path="/videos/:id" element={<SingleVideo/>}/>
     </Routes>
   )
 }

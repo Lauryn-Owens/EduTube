@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Oval} from "react-loader-spinner";
-import { videoUrls } from '../utils/data/videoUrls.js';
+import { Link } from 'react-router-dom';
 import { postData, fetchData } from '../services/videoClient.jsx';
+
+import {Oval} from "react-loader-spinner";
+
+import Video from '../components/videos/video.jsx';
 
 
 import edutubeEducational from "../assets/images/pages/videos/edutubeEducational.png";
@@ -27,10 +30,11 @@ function Videos() {
     };
 
   useEffect(() => {
-     postData();
+     //postData();
     fetchAllVideos();
   }, []);
 
+  
    return (
     <div>
       {/**
@@ -49,11 +53,10 @@ function Videos() {
                * if the currVideo being accessed is undefined or null*/
           videos?.slice(0,10)?.map((currVideo) =>{
             return(
-                <li  className='m-auto shadow-lilac w-[350px] border-2 rounded-lg' key={currVideo.id}>
-                <video className='  rounded-lg' poster={edutubeEducational} width="100%" height="100%"  controls>
-                      <source  src={currVideo.video_url}  type="video/mp4" />
-                  Your browser doesn't support the video tag!!! Please update your browser and try again!!!
-                </video>
+                <li  className='m-auto shadow-lilac border-2 rounded-lg' key={currVideo.id}> 
+                  <Link to={`/videos/${currVideo.id}`} state={currVideo}> 
+                    <Video video_thumbnail={edutubeEducational} video_url={currVideo.video_url} video_title={currVideo.title}/>
+                  </Link>
                 </li>
             )
           })
