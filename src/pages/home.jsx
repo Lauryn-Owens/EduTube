@@ -9,7 +9,7 @@ import childLearning from "../assets/images/pages/home/childLearning.jpg";
 import lightbulb from "../assets/images/pages/home/lightbulb.png";
 import arrowsMoreUp from "../assets/images/pages/home/arrowsMoreUp.png";
 import handshake from "../assets/images/pages/home/handshake.png";
-import navigate_arrow from "../assets/images/pages/home/navigate_arrow.png";
+import navigateArrow from "../assets/images/pages/home/navigateArrow.png";
 import laptopClassroom from "../assets/images/pages/home/laptopClassroom.jpg";
 function Home() {
   return (
@@ -60,12 +60,12 @@ function Home() {
                 <p className='w-6/12 m-auto font-bold'>Build the critical and essential literacy skills kids need for lifelong learning and success.
                 </p>
             </section>
-            <div className=' w-8/12 h-80 min-h-28 m-auto border-2 border-white  rounded-md'>
+            <div className=' w-8/12 h-80 min-h-28 m-auto border-2  border-white  rounded-md'>
                 <h6 className='mt-8 mb-4 uppercase tracking-tight'>Spotlight</h6>
                 <p className=' text-xl font-bold mb-4'>Proven to strengthen essential literacy skills</p>
                 <p className='mb-8'>Learn more about EduTube efficacy and evidence-based learning design.</p>
                 <button className='m-auto w-8/12 p-2 text-white font-bold bg-slate_blue hover:bg-pastel_purple tracking-tight flex justify-center items-center gap-2 rounded-md'>Explore Research
-                    <img className='w-6 h-6' src={navigate_arrow} alt="upright slanted arrow facing northeast in a white circle" />
+                    <img className='w-6 h-6' src={navigateArrow} alt="upright slanted arrow facing northeast in a white circle" />
                      </button>
             </div>
         </section>

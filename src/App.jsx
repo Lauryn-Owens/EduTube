@@ -2,9 +2,11 @@ import React from 'react';
 
 import Navbar from './components/ui/navbar';
 
-const App = () => {
+import{postData} from "./services/videoClient.jsx";
 
-  const postData = async () => {
+const App = () => {
+/**
+ * const postData = async () => {
     const url = 'api/videos';
     const user_id = 'lauryn_owens'; 
   
@@ -50,6 +52,8 @@ const App = () => {
       console.error('Error:', error);
     }
   };
+  
+ */
   
   return (
     <div className=" box-border m-0 p-0 overscroll-x-contain text-white font-abel"> 

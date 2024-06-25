@@ -15,7 +15,7 @@ function Navbar() {
          hover:bg-lavender
         '
         onClick={() => {
-            window.location.href='/login'
+            window.location.href='/videos'
         }}
         >
             Videos
