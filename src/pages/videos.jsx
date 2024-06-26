@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { postData, fetchData } from '../services/videoClient.jsx';
+import { postVideo, fetchVideos } from '../services/videoClient.jsx';
 
 import {Oval} from "react-loader-spinner";
 
@@ -19,18 +19,20 @@ function Videos() {
   1. awaits and grabs fetched data that is returned from 
   the fetchData and save it to fetchedData variable
   2. update videos state value to the fetchedData value
-  3.update isLoading to false as the promise object is resolved
-  4.return nothing and exit function
+  3. update isLoading to false as the promise object is resolved
+  4. return nothing and exit function
   */
   const fetchAllVideos = async () => {
-     const fetchedData = await fetchData();
-     setVideos(fetchedData);
+     const fetchedVideos = await fetchVideos();
+     setVideos(fetchedVideos);
      setIsLoading(false);
      return;
     };
 
   useEffect(() => {
-     //postData();
+    /**
+     * 1. pushed videos to server already */
+     //postVideo();
     fetchAllVideos();
   }, []);
 
@@ -50,12 +52,13 @@ function Videos() {
             {
               /**
                * 1. optional chaining to prevent an error being thrown 
-               * if the currVideo being accessed is undefined or null*/
+               * if the currVideo being accessed is undefined or null
+               * */
           videos?.slice(0,10)?.map((currVideo) =>{
             return(
                 <li  className='m-auto shadow-lilac border-2 rounded-lg' key={currVideo.id}> 
                   <Link to={`/videos/${currVideo.id}`} state={currVideo}> 
-                    <Video video_thumbnail={edutubeEducational} video_url={currVideo.video_url} video_title={currVideo.title}/>
+                    <Video video_thumbnail={edutubeEducational} video_url={currVideo.video_url} video_title={currVideo.title }/>
                   </Link>
                 </li>
             )
