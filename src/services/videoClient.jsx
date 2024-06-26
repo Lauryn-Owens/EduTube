@@ -27,7 +27,9 @@ export const postVideo = async ({ user_id, title, description, video_url }) => {
     const result = await response.json();
 
     const fetchUrl = `${url}?user_id=${user_id}`;
+  
     const fetchResponse = await fetch(fetchUrl);
+    
     if (!fetchResponse.ok) {
       throw new Error(`HTTP error! status: ${fetchResponse.status}`);
     }
@@ -56,4 +58,25 @@ export const fetchVideos = async (user_id = "lauryn_owens") => {
         console.error('Error fetching data:', error);
         throw error;
     }
+};
+
+export const fetchSingleVideo = async (video_id) => {
+  //url = `api/videos/single?video_id=${video_id}`
+  const url = `api/videos/single?video_id=${video_id}`;
+  try {
+    const response = await axios.get(url, {
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    if (response.status === 200) {
+        return response.data.video;
+    } else {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+} catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+ }
 };

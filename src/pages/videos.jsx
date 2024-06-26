@@ -54,7 +54,7 @@ function Videos() {
                * 1. optional chaining to prevent an error being thrown 
                * if the currVideo being accessed is undefined or null
                * */
-          videos?.slice(0,10)?.map((currVideo) =>{
+          videos?.slice(0,460)?.map((currVideo) =>{
             return(
                 <li  className='m-auto shadow-lilac border-2 rounded-lg' key={currVideo.id}> 
                   <Link to={`/videos/${currVideo.id}`} state={currVideo}> 

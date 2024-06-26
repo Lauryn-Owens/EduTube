@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { postVideo } from "../services/videoClient";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { postVideo, fetchVideos, fetchSingleVideo } from "../services/videoClient";
 
 function PostVideo() {
   const [formData, setFormData] = useState({ video_url: '', video_title: '', video_description: '' });
+  const [newVideo, setNewVideo] = useState(null);
+  const [newVideoId, setNewVideoId] = useState('');
+  const [viewVideo, setViewVideo] = useState(false);
 
   const onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -10,20 +14,39 @@ function PostVideo() {
   };
 
   const onHandleSubmit = async (e) => {
-    /**
-     * 1.// prevent form from reloading/refreshing page
-     */
     e.preventDefault(); 
     const { video_title, video_description, video_url } = formData;
     try {
-      await postVideo(video_title, video_description, video_url);
-      //make form reset and go to a singleVideo page with the new uploaded video  
-    }
-    catch(error){
-        console.error('Error submitting video:', error);
-      //add handle error -- will create sample error message
+      await postVideo({ 
+        user_id: "lauryn_owens", 
+        title: video_title, 
+        description: video_description, 
+        video_url
+      });
+           
+      const fetchedVideos = await fetchVideos();
+      const lastVideo = fetchedVideos[fetchedVideos.length - 1];
+      setNewVideoId(lastVideo.id);
+    } catch (error) {
+      console.error('Error submitting video:', error);
     }
   };
+
+  useEffect(() => {
+    const fetchAndSetVideo = async () => {
+      if (newVideoId) {
+        try {
+          const videoData = await fetchSingleVideo(newVideoId);
+          setNewVideo(videoData);
+          setViewVideo(true);
+          console.log(newVideo);
+        } catch (error) {
+          console.error('Error fetching single video:', error);
+        }
+      }
+    };
+    fetchAndSetVideo();
+  }, [newVideoId]);
 
   return (
     <div>
@@ -65,7 +88,10 @@ function PostVideo() {
           </label>
         </div>
         <button type="submit">Submit</button>
-      </form>
+      </form>    
+      {viewVideo && (
+        <Link to={`/videos/${newVideoId}`} state={newVideo}>View Video</Link>
+      )}
     </div>
   );
 }
