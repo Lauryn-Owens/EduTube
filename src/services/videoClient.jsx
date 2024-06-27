@@ -61,7 +61,6 @@ export const fetchVideos = async (user_id = "lauryn_owens") => {
 };
 
 export const fetchSingleVideo = async (video_id) => {
-  //url = `api/videos/single?video_id=${video_id}`
   const url = `api/videos/single?video_id=${video_id}`;
   try {
     const response = await axios.get(url, {
@@ -80,3 +79,55 @@ export const fetchSingleVideo = async (video_id) => {
     throw error;
  }
 };
+
+const BASE_URL = '/api/';
+
+export const createComment = async (video_id, content, user_id="lauryn_owens") => {
+  const url = `${BASE_URL}videos/comments`;
+  
+  const requestBody = {
+    "video_id": video_id,
+    "content": content,
+    "user_id": user_id
+  };
+
+  try {
+    const response = await axios.post(url, requestBody, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (response.status !== 200) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.data;
+  } catch (error) {
+    console.error('Error creating comment:', error);
+    throw error;
+  }
+};
+export const fetchComments = async (video_id) => {
+  const url = `${BASE_URL}videos/comments?video_id=${video_id}`;
+  
+  try {
+    const response = await axios.get(url, {
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.status === 200) {
+      return response.data.comments;
+    } else {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error fetching comments:', error);
+    throw error;
+  }
+};
+
+
