@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Video from '../components/videos/video';
-import { createComment, fetchComments } from "../services/videoClient";
+import Video from '../../components/videos/video';
+import { fetchCommentList, onChangeHandler, onSubmitHandler } from './singleVideoFunctions';
 
 function SingleVideo() {
   const [comment, setComment] = useState('');
@@ -9,33 +9,10 @@ function SingleVideo() {
   
   const location = useLocation();
   const videoData = location.state || {};
-  console.log(videoData);
 
-  /**fetch the new comments as they are added */
   useEffect(() => {
-    const fetchCommentList = async () => {
-      const fetchedComments = await fetchComments(videoData.id);
-      setCommentList(fetchedComments);
-    } 
-    fetchCommentList();
+    fetchCommentList(videoData.id, setCommentList);
   }, [comment]);
-  
-  const onChangeHandler = (e) => {
-    setComment(e.target.value);
-  };
-
-
-  const onSubmitHandler = async () => {
-    try {
-      await createComment(videoData.id, comment);
-      setComment('');
-      // Fetch updated comments after adding new comment
-      //const updatedComments = await fetchComments(videoData.id);
-      //
-    } catch (error) {
-      console.error('Error adding comment:', error);
-    }
-  };
 
   return (
     <div className='w-10/12 m-auto'>
@@ -44,7 +21,7 @@ function SingleVideo() {
       
       <form onSubmit={(e) => {
         e.preventDefault();
-        onSubmitHandler();
+        onSubmitHandler(videoData.id, comment, setComment, fetchCommentList);
       }}>
         <label htmlFor="add_comment">Add Comment</label>
         <input 
@@ -52,7 +29,7 @@ function SingleVideo() {
           name="add_comment" 
           required
           value={comment}
-          onChange={onChangeHandler}
+          onChange={(e) => onChangeHandler(e, setComment)}
         />
         <button type="submit">Submit</button>
       </form>
