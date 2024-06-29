@@ -6,6 +6,7 @@ function NavButton({width, height, location_url, nav_text}) {
     <button className='
     rounded-md
     text-center
+    text-white
     capitalize
     bg-slate_blue tracking-tight font-bold
     hover:bg-lavender
