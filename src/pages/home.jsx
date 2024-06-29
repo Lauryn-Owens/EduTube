@@ -1,8 +1,14 @@
 //import react
 import React from 'react';
+//import react icons
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
+
 
 // import css stylesheets
 import "../styles/pages/home/home.css";
+
+//import components
+import Footer from '../components/home/footer';
 
 // import images
 import childLearning from "../assets/images/pages/home/childLearning.jpg";
@@ -14,14 +20,14 @@ import laptopClassroom from "../assets/images/pages/home/laptopClassroom.jpg";
 
 function Home() {
   return (
-    <div>
+    <div id="top">
        {/* introduction section */}
        <section
         className=' w-9/12 max-h-max m-auto mt-24 pb-8 flex flex-col sm:flex-row gap-10 '
        >
         <div className='w-full sm:text-center'>
           {/* heading */}
-          <h3 className='w-full  text-lg md:text-2xl font-bold'>fuel a love for <br/>
+          <h3 className='w-full  text-lg md:text-2xl font-bold'>Fuel a love for <br/>
            learning that leads to <br/>
            meaningful, <br/>
            measurable growth 
@@ -104,7 +110,7 @@ function Home() {
             <p className='font-medium'>for everyone</p>
             {/* description */}
             <p className='mb-4 font-thin'>edutube for all ages</p>
-            <p className='pl-4 border-l-4 border-l-slate_blue'>&quot; if i had to choosee only one digital educational video platform in my classroom, edutube wins hands down.&quot;<br/>
+            <p className='pl-4 border-l-4 border-l-slate_blue'>&quot; if i had to choose only one digital educational video platform in my classroom, edutube wins hands down.&quot;<br/>
             &#45; john doe, md university of michigan
             </p>
             {/* description */}
@@ -116,9 +122,17 @@ function Home() {
             </div>
         </section>
         {/* social media section */}
-        <section className='curved_border mt-20 bg-lilac'>
+        <section className='curved_border mt-20 bg-lilac p-8'>
+        <h3 className='text-center text-lg md:text-xlg font-bold mt-4 mb-8'>Follow us on social media</h3>
+            <div className="flex justify-center items-center flex-wrap gap-4 p-4">
+                <FaFacebook className="text-blue-600 w-16 h-16 sm:w-12 sm:h-12 hover:text-blue-800 transition-colors" />
+                <FaInstagram className="text-pink-600 w-16 h-16 sm:w-12 sm:h-12 hover:text-pink-800 transition-colors" />
+            </div>
         </section>
-        
+        {/**footer */}
+        <footer className=''>
+         <Footer topOfPage='top'/>
+      </footer>
     </div>
   )
 }

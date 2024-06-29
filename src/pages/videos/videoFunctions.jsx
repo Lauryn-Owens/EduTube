@@ -46,3 +46,18 @@ export const useVideos = () => {
   // Returning videos, isLoading state, and onClickHandler function for external use
   return { videos, isLoading, onClickHandler };
 };
+
+// Function to fetch more videos
+export const loadMoreVideos = async (loadedVideosCount, setLoadedVideosCount) => {
+  try {
+    // Fetch more videos from the API
+    const moreVideos = await fetchVideos(); 
+
+    // Update the loaded videos count or add more videos to existing list
+    // incrementing by 20
+    setLoadedVideosCount(loadedVideosCount + 20); 
+  } catch (error) {
+    //print error
+    console.error('Error fetching more videos:', error);
+  }
+};

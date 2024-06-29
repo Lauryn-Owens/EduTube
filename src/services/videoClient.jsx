@@ -1,4 +1,7 @@
+//import axios
 import axios from 'axios';
+
+const BASE_URL = '/api/';
 
 export const postVideo = async ({ user_id, title, description, video_url }) => {
   const url = 'api/videos';
@@ -80,7 +83,6 @@ export const fetchSingleVideo = async (video_id) => {
  }
 };
 
-const BASE_URL = '/api/';
 
 export const createComment = async (video_id, content, user_id="lauryn_owens") => {
   const url = `${BASE_URL}videos/comments`;
@@ -130,4 +132,29 @@ export const fetchComments = async (video_id) => {
   }
 };
 
-
+export const editVideos = async(video_id, title, description) =>{
+  const apiUrl = `${BASE_URL}/videos/${video_id}`;
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        video_id: video_id,
+        title: title,
+        description: description
+      })
+    });
+    if (!response.ok) {
+      throw new Error('Failed to edit video');
+    }
+    const updatedVideo = await response.json();
+    return updatedVideo;
+  } catch (error) {
+    //print error
+    console.error('Error editing video:', error);
+     // throw the error for handling in the calling code
+    throw error;
+  }
+}

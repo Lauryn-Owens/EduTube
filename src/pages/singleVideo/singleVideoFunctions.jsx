@@ -1,5 +1,5 @@
 // Import functions from videoClient service
-import { createComment, fetchComments } from "../../services/videoClient";
+import { createComment, fetchComments} from "../../services/videoClient";
 
 // Function to fetch comments for a specific video
 export const fetchCommentList = async (videoId, setCommentList) => {
@@ -39,3 +39,4 @@ export const onSubmitHandler = async (videoId, comment, setComment, fetchComment
 export const showDescription = (setDisplayDescription, displayDescription) => {
   setDisplayDescription(!displayDescription);
 };
+
