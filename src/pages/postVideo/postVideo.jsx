@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 // import link jsx to use
 import { Link } from 'react-router-dom';
 // import needed functions
-import { onChangeHandler, onSubmitHandler, fetchAndSetVideo } from './postVideoFunctions';
+import { onChangeHandler, onSubmitHandler, fetchAndSetVideo} from './postVideoFunctions';
+
 
 function PostVideo() {
   // initializing state
@@ -22,7 +23,7 @@ function PostVideo() {
 
   return (
     <div className="container mx-auto p-4">
-      {/* page heading */}
+       {/* page heading */}
       <h1 className="text-2xl font-bold mb-4 text-center">Submit Data</h1>
       
       {/* form for submitting video data */}
