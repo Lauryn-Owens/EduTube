@@ -1,3 +1,6 @@
+EduTube is a simple responsive web application that allows users to create, comment on, and watch educational videos. 
+Technology Stack: React and Tailwind CSS.
+
 Key Features
 
 -- how a list of videos and allow users to select a video from the list.
