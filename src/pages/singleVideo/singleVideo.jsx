@@ -64,7 +64,7 @@ function SingleVideo() {
       <p>Comments</p>
       <ul className="mt-4 mb-12">
         {commentList && commentList.map((currComment, index) => (
-          <li key={index} className="m-auto mb-2 py-4 pl-4 border-2 w-11/12">Lauryn Owens: {currComment.content}</li>
+          <li key={index} className="m-auto mb-2 py-4 pl-4 border-2 w-11/12">{index%2 === 0 ? 'Lauryn Owens: ' : 'guest: '} {currComment.content}</li>
         ))}
       </ul>
     </div>
