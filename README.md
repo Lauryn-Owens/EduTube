@@ -27,8 +27,7 @@ Future Features/Enhancements
 --break down components a bit more
 
 
-Deployed Application:
-Screenshots:
+Deployed Application: Every time I try to deploy my web application the API calls no longer work I've tried to debug and I have not been able to.
 
 How To Use
 To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
