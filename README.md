@@ -1,8 +1,43 @@
-# React + Vite
+Key Features
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-- how a list of videos and allow users to select a video from the list.
 
-Currently, two official plugins are available:
+-- Allow the user to create a new video object with a title, description and a video URL.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-- A user must be able to comment on a video and view comments from other users.
+
+-- Open the videos in full screen with full playback functionality.
+
+-- Include options for adjusting playback speed and volume.
+
+
+Future Features/Enhancements
+
+-- Allow a user to edit videos that they have posted
+
+-- Allow a user to sign in to comment or comment as guest
+
+-- Add more tests as I learn more about unit testing
+
+-- Add more error boundaries
+
+--break down components a bit more
+
+
+Deployed Application:
+Screenshots:
+
+How To Use
+To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
+
+# Clone this repository
+$ git clone https://github.com/Lauryn-Owens/EduTube.git
+
+# Go into the repository
+$ cd eduTube
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm run dev
